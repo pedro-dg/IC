@@ -12,9 +12,9 @@ m = np.arange(-J,J+1)
 #Efetuando o cálculo da função partição
 
 def calculo_z(m,x,T):
-    expoente = -m*x[...,np.newaxis]
+    expoente = m*x[...,np.newaxis]
     z = np.sum(np.exp(expoente),axis=2)
-    F = -T[:,np.newaxis]*np.log(z)
+    F = -T[np.newaxis,:]*np.log(z)
     return z,F
 
 #Efetuando o cálculo de S
