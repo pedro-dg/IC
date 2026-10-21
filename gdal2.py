@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 J = 7/2
 T = np.linspace(0.1,10,1000)
-B = np.linspace(0.1,10,1000)
+B = np.linspace(0,10,1000)
 x = B[:,np.newaxis]/T
 m = np.arange(-J,J+1)
 
@@ -47,14 +47,30 @@ def plot_s(x_sorted,s_sorted):
     return
 def plot_M(T,M):
     plt.plot(T,M[-1,:],color="blue",label="B = 10T")
-    plt.plot(T,M[0,:],color="green",label="B = 0.1T")
+    plt.plot(T,M[0,:],color="green",label="B = 0T")
     plt.plot(T,M[500,:],color="red",label=f"B = {B[500]:.2f}T")
     plt.legend()
     plt.xlabel("T(K)")
     plt.ylabel("M/M_0")
     plt.xlim(0.1,10)
     plt.grid(True)
+    plt.title("Magnetização x Temperatura a campo constante")
     plt.show()
+#Plot de S a B constante
+def plot_sB(s,T):
+    plt.grid(True)
+    plt.xlabel(r"$k_B$T/$\mu_B$")
+    plt.ylabel("S (J/mol.K)")
+    plt.plot(T,s[0,:],color="red",label="B=0T")
+    plt.plot(T,s[500,:],color="green",label="B=5T")
+    plt.plot(T,s[-1,:],color="blue",label="B=10T")
+    plt.legend()
+    plt.xlim(0,10)
+    plt.title("Entropia x Temperatura a campo constante")
+    plt.show()
+    plt.close()
+    return
+
 
 #Plot da função analítica
 def plot_analitico():
@@ -70,6 +86,8 @@ s = calculo_s(T,F)
 x_s,s_s = tratar_dados(x,s)
 M = calculo_M(F)
 
+
 plot_s(x_s,s_s)
+plot_sB(s,T)
 plot_M(T,M)
 plot_analitico()
