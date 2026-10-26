@@ -42,6 +42,7 @@ def plot_s(x_sorted,s_sorted):
     plt.xlabel("x = B/T")
     plt.ylabel("S (J/mol.K)")
     plt.plot(x_sorted,s_sorted)
+    plt.savefig('./Entropia.png')
     plt.show()
     plt.close()
     return
@@ -55,6 +56,7 @@ def plot_M(T,M):
     plt.xlim(0.1,10)
     plt.grid(True)
     plt.title("Magnetização x Temperatura a campo constante")
+    plt.savefig('./MxT.png')
     plt.show()
 #Plot de S a B constante
 def plot_sB(s,T):
@@ -67,6 +69,7 @@ def plot_sB(s,T):
     plt.legend()
     plt.xlim(0,10)
     plt.title("Entropia x Temperatura a campo constante")
+    plt.savefig('./SxT.png')
     plt.show()
     plt.close()
     return
@@ -90,4 +93,3 @@ M = calculo_M(F)
 plot_s(x_s,s_s)
 plot_sB(s,T)
 plot_M(T,M)
-plot_analitico()
