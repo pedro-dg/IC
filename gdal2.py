@@ -4,9 +4,11 @@ import matplotlib.pyplot as plt
 #Definindo os parâmetros
 
 J = 7/2
+kB = 1.38*1e-23
+muB = 9.24*1e-24
 T = np.linspace(0.1,10,1000)
 B = np.linspace(0,10,1000)
-x = B[:,np.newaxis]/T
+x = B[:,np.newaxis]/(T)
 m = np.arange(-J,J+1)
 
 #Efetuando o cálculo da função partição
@@ -69,9 +71,18 @@ def plot_sB(s,T):
     plt.legend()
     plt.xlim(0,10)
     plt.title("Entropia x Temperatura a campo constante")
-    plt.savefig('./SxT.png')
+    plt.annotate(
+        "ln(8)",
+        xy=(1,s[0,0]),
+        xytext=(1,s[0,0]-0.5),
+        arrowprops=dict(
+            arrowstyle="->",
+            color="red",
+            lw=2
+        )
+    )
+    plt.savefig("./plots/GdAl2/SxT.png",dpi=200)
     plt.show()
-    plt.close()
     return
 
 
@@ -82,6 +93,7 @@ def plot_analitico():
     plt.plot(x_an,s_an)
     plt.grid(True)
     plt.show()
+    plt.close()
     return
 
 z,F = calculo_z(m,x,T)

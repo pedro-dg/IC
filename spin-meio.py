@@ -12,8 +12,8 @@ dB = B[1] - B[0]
 M = -np.gradient(F,dB,axis=0)
 
 plt.plot(T,M[-1,:],color="red",label="B=10T")
-plt.plot(T,M[500,:],color="blue",label="B=5T")
-plt.plot(T,M[0,:],color="green",label="B=0T")
+plt.plot(T,M[500,:],color="blue",label="B=0T")
+plt.plot(T,M[0,:],color="green",label="B=-10T")
 plt.grid(True)
 plt.xlim(0,100)
 plt.xlabel(r'$k_B$T/$\mu_B$')
